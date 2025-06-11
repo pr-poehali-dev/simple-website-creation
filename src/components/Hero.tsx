@@ -32,6 +32,12 @@ const Hero = () => {
                 variant="outline"
                 size="lg"
                 className="border-coffee-500 text-coffee-500 hover:bg-coffee-500 hover:text-white px-8 py-3 text-lg"
+                onClick={() =>
+                  window.open(
+                    "https://maps.google.com/?q=ул.+Пушкинская,+15,+Москва",
+                    "_blank",
+                  )
+                }
               >
                 <Icon name="MapPin" size={20} className="mr-2" />
                 Найти кофейню

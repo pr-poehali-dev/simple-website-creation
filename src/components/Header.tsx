@@ -1,5 +1,6 @@
 import { Button } from "@/components/ui/button";
 import Icon from "@/components/ui/icon";
+import { Link } from "react-router-dom";
 
 const Header = () => {
   return (
@@ -41,12 +42,14 @@ const Header = () => {
           </nav>
 
           <div className="flex items-center space-x-4">
-            <Button
-              variant="outline"
-              className="border-coffee-500 text-coffee-500 hover:bg-coffee-500 hover:text-white"
-            >
-              Заказать
-            </Button>
+            <Link to="/order">
+              <Button
+                variant="outline"
+                className="border-coffee-500 text-coffee-500 hover:bg-coffee-500 hover:text-white"
+              >
+                Заказать
+              </Button>
+            </Link>
             <Button className="md:hidden" variant="ghost" size="icon">
               <Icon name="Menu" size={24} />
             </Button>
