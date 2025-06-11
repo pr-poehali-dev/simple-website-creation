@@ -10,7 +10,7 @@ const Header = () => {
           <div className="flex items-center space-x-2">
             <Icon name="Coffee" size={32} className="text-coffee-500" />
             <h1 className="text-2xl font-playfair font-bold text-coffee-500">
-              Bean & Brew
+              Coffito y Egorito
             </h1>
           </div>
 
