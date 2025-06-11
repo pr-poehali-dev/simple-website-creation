@@ -1,5 +1,6 @@
 import { Button } from "@/components/ui/button";
 import Icon from "@/components/ui/icon";
+import { Link } from "react-router-dom";
 
 const Hero = () => {
   return (
@@ -18,13 +19,15 @@ const Hero = () => {
               это путешествие в мир аромата и уюта.
             </p>
             <div className="flex flex-col sm:flex-row gap-4">
-              <Button
-                size="lg"
-                className="bg-orange-accent hover:bg-orange-accent/90 text-white px-8 py-3 text-lg"
-              >
-                <Icon name="ShoppingCart" size={20} className="mr-2" />
-                Заказать сейчас
-              </Button>
+              <Link to="/order">
+                <Button
+                  size="lg"
+                  className="bg-orange-accent hover:bg-orange-accent/90 text-white px-8 py-3 text-lg"
+                >
+                  <Icon name="ShoppingCart" size={20} className="mr-2" />
+                  Заказать сейчас
+                </Button>
+              </Link>
               <Button
                 variant="outline"
                 size="lg"

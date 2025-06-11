@@ -1,5 +1,6 @@
 import { Button } from "@/components/ui/button";
 import Icon from "@/components/ui/icon";
+import { Link } from "react-router-dom";
 
 const Menu = () => {
   const menuItems = [
@@ -82,24 +83,28 @@ const Menu = () => {
                 <p className="text-coffee-400 font-inter mb-4">
                   {item.description}
                 </p>
-                <Button className="w-full bg-coffee-500 hover:bg-coffee-600 text-white">
-                  <Icon name="Plus" size={16} className="mr-2" />
-                  Добавить в заказ
-                </Button>
+                <Link to="/order">
+                  <Button className="w-full bg-coffee-500 hover:bg-coffee-600 text-white">
+                    <Icon name="Plus" size={16} className="mr-2" />
+                    Добавить в заказ
+                  </Button>
+                </Link>
               </div>
             </div>
           ))}
         </div>
 
         <div className="text-center">
-          <Button
-            size="lg"
-            variant="outline"
-            className="border-coffee-500 text-coffee-500 hover:bg-coffee-500 hover:text-white px-8 py-3"
-          >
-            <Icon name="FileText" size={20} className="mr-2" />
-            Посмотреть полное меню
-          </Button>
+          <Link to="/menu">
+            <Button
+              size="lg"
+              variant="outline"
+              className="border-coffee-500 text-coffee-500 hover:bg-coffee-500 hover:text-white px-8 py-3"
+            >
+              <Icon name="FileText" size={20} className="mr-2" />
+              Посмотреть полное меню
+            </Button>
+          </Link>
         </div>
       </div>
     </section>
