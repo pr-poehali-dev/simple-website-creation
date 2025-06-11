@@ -30,7 +30,7 @@ const Footer = () => {
               </div>
               <div className="flex items-center space-x-2">
                 <Icon name="Mail" size={16} />
-                <span>info@beanbrew.ru</span>
+                <span>osipovegor003@gmail.ru</span>
               </div>
             </div>
           </div>
