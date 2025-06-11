@@ -20,7 +20,7 @@ const Footer = () => {
             <div className="space-y-2 text-cream-200 font-inter">
               <div className="flex items-center space-x-2">
                 <Icon name="MapPin" size={16} />
-                <span>ул. Кофейная, 123</span>
+                <span>ул. Политехническая 122</span>
               </div>
               <div className="flex items-center space-x-2">
                 <Icon name="Phone" size={16} />
