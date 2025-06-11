@@ -8,7 +8,9 @@ const Footer = () => {
           <div>
             <div className="flex items-center space-x-2 mb-4">
               <Icon name="Coffee" size={32} className="text-orange-accent" />
-              <h3 className="text-2xl font-playfair font-bold">Bean & Brew</h3>
+              <h3 className="text-2xl font-playfair font-bold">
+                Coffito y Egorito
+              </h3>
             </div>
             <p className="text-cream-200 font-inter">
               Идеальный кофе для идеального дня
