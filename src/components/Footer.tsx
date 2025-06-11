@@ -55,19 +55,25 @@ const Footer = () => {
             </h4>
             <div className="flex space-x-4">
               <a
-                href="#"
+                href="https://instagram.com/beanbrew_coffee"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="text-cream-200 hover:text-orange-accent transition-colors"
               >
                 <Icon name="Instagram" size={24} />
               </a>
               <a
-                href="#"
+                href="https://facebook.com/beanbrewcoffee"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="text-cream-200 hover:text-orange-accent transition-colors"
               >
                 <Icon name="Facebook" size={24} />
               </a>
               <a
-                href="#"
+                href="https://twitter.com/beanbrew_coffee"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="text-cream-200 hover:text-orange-accent transition-colors"
               >
                 <Icon name="Twitter" size={24} />

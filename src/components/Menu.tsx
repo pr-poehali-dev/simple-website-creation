@@ -83,9 +83,14 @@ const Menu = () => {
                 <p className="text-coffee-400 font-inter mb-4">
                   {item.description}
                 </p>
-                <Link to="/order">
-                  <Button className="w-full bg-coffee-500 hover:bg-coffee-600 text-white">
-                    <Icon name="Plus" size={16} className="mr-2" />
+                <Link
+                  to={`/order?item=${encodeURIComponent(item.name)}&price=${item.price}&image=${encodeURIComponent(item.image)}`}
+                >
+                  <Button
+                    size="sm"
+                    className="bg-orange-accent hover:bg-orange-500 text-white px-6 py-2"
+                  >
+                    <Icon name="ShoppingCart" size={16} className="mr-2" />
                     Добавить в заказ
                   </Button>
                 </Link>

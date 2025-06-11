@@ -1,4 +1,5 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { useSearchParams } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
@@ -15,6 +16,16 @@ import Icon from "@/components/ui/icon";
 import { Link } from "react-router-dom";
 
 const Order = () => {
+  const [searchParams] = useSearchParams();
+  const [cartItems, setCartItems] = useState<
+    Array<{
+      name: string;
+      price: number;
+      image: string;
+      quantity: number;
+    }>
+  >([]);
+
   const [formData, setFormData] = useState({
     name: "",
     phone: "",
@@ -23,9 +34,47 @@ const Order = () => {
     paymentMethod: "",
   });
 
+  useEffect(() => {
+    const itemName = searchParams.get("item");
+    const itemPrice = searchParams.get("price");
+    const itemImage = searchParams.get("image");
+
+    if (itemName && itemPrice && itemImage) {
+      setCartItems([
+        {
+          name: itemName,
+          price: parseInt(itemPrice),
+          image: itemImage,
+          quantity: 1,
+        },
+      ]);
+    }
+  }, [searchParams]);
+
+  const updateQuantity = (index: number, newQuantity: number) => {
+    if (newQuantity <= 0) {
+      setCartItems(cartItems.filter((_, i) => i !== index));
+    } else {
+      setCartItems(
+        cartItems.map((item, i) =>
+          i === index ? { ...item, quantity: newQuantity } : item,
+        ),
+      );
+    }
+  };
+
+  const totalPrice = cartItems.reduce(
+    (sum, item) => sum + item.price * item.quantity,
+    0,
+  );
+
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    console.log("Заказ оформлен:", formData);
+    console.log("Заказ оформлен:", {
+      ...formData,
+      items: cartItems,
+      total: totalPrice,
+    });
   };
 
   return (
@@ -50,10 +99,69 @@ const Order = () => {
             <h1 className="text-4xl font-playfair font-bold text-coffee-500 mb-4">
               Оформление заказа
             </h1>
-            <p className="text-xl text-coffee-400 font-inter">
+            <p className="text-coffee-400 font-inter">
               Заполните форму и мы свяжемся с вами для подтверждения
             </p>
           </div>
+
+          {/* Cart Items */}
+          {cartItems.length > 0 && (
+            <Card className="mb-8">
+              <CardHeader>
+                <CardTitle className="text-coffee-500 font-playfair">
+                  Ваш заказ
+                </CardTitle>
+              </CardHeader>
+              <CardContent>
+                {cartItems.map((item, index) => (
+                  <div
+                    key={index}
+                    className="flex items-center justify-between border-b pb-4 mb-4 last:border-b-0 last:mb-0"
+                  >
+                    <div className="flex items-center space-x-4">
+                      <img
+                        src={item.image}
+                        alt={item.name}
+                        className="w-16 h-16 object-cover rounded-lg"
+                      />
+                      <div>
+                        <h3 className="font-semibold text-coffee-500">
+                          {item.name}
+                        </h3>
+                        <p className="text-coffee-400">{item.price} ₽</p>
+                      </div>
+                    </div>
+                    <div className="flex items-center space-x-2">
+                      <Button
+                        type="button"
+                        variant="outline"
+                        size="sm"
+                        onClick={() => updateQuantity(index, item.quantity - 1)}
+                      >
+                        -
+                      </Button>
+                      <span className="mx-2 font-semibold">
+                        {item.quantity}
+                      </span>
+                      <Button
+                        type="button"
+                        variant="outline"
+                        size="sm"
+                        onClick={() => updateQuantity(index, item.quantity + 1)}
+                      >
+                        +
+                      </Button>
+                    </div>
+                  </div>
+                ))}
+                <div className="text-right pt-4 border-t">
+                  <p className="text-xl font-bold text-coffee-500">
+                    Итого: {totalPrice} ₽
+                  </p>
+                </div>
+              </CardContent>
+            </Card>
+          )}
 
           <Card className="shadow-xl">
             <CardHeader className="bg-gradient-to-r from-coffee-500 to-coffee-600 text-white">
