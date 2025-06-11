@@ -86,7 +86,7 @@ const Footer = () => {
 
         <div className="border-t border-coffee-400 pt-8 text-center">
           <p className="text-cream-200 font-inter">
-            © 2024 Bean & Brew. Все права защищены.
+            © 2025 Coffito y Egorito. Все права защищены.
           </p>
         </div>
       </div>
